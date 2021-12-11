@@ -10,6 +10,8 @@ public class Main {
         int[] array_a = getArray(10, 2);
         System.out.println("Отправили массив: " + Arrays.toString(array_a));
         System.out.println("Получили массив: " + Arrays.toString(swapNumbers(array_a)));
+        System.out.println("Проверяем задание 2.");
+        System.out.println("Получили массив: " + Arrays.toString(newArray()));
 
     }
 
@@ -41,5 +43,15 @@ public class Main {
             }
         }
         return array;
+    }
+
+    // Задание 2. Задать пустой целочисленный массив длиной 100. С помощью цикла заполнить его значениями 1 2 3 4 5 6 7 8 … 100;
+    public static int[] newArray() {
+        int[] array = new int[100];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i+1;
+        }
+        return array;
+
     }
 }

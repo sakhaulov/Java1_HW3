@@ -7,39 +7,70 @@ public class Main {
         Random rand = new Random();
         int[] array_a = getArray(10, 2);
         int[] array_b = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        int[][] array_sq = getArray(7, 7, 1);
 
         System.out.println("Проверяем задание 1.");
         System.out.println("Отправили массив: " + Arrays.toString(array_a));
         System.out.println("Получили массив: " + Arrays.toString(swapNumbers(array_a)));
+
         System.out.println("Проверяем задание 2.");
         System.out.println("Получили массив: " + Arrays.toString(newArray()));
+
         System.out.println("Проверяем задание 3.");
         System.out.println("Отправили массив: " + Arrays.toString(array_b));
         System.out.println("Получили массив: " + Arrays.toString(multiplyElems(array_b)));
+
         System.out.println("Проверяем задание 4.");
+        printArray(array_sq);
+        System.out.println();
+        printArray(fillDiagonal(array_sq));
 
         System.out.println("Проверяем задание 5.");
         System.out.println("Получили массив: " + Arrays.toString(newCustomArray(15, 8)));
+
         System.out.println("Проверяем задание 6.");
         System.out.println("Отправили массив: " + Arrays.toString(array_b));
         findMinMax(array_b);
     }
 
     // Генерит новый массив из рандомных чисел
-    public static int[] getArray(int lenght, int bound) {
+    public static int[] getArray(int length, int bound) {
         Random rand = new Random();
-        int[] test_array = new int[lenght];
+        int[] array = new int[length];
 
-        for (int i = 0; i < test_array.length; i++) {
-            test_array[i] = rand.nextInt(bound);
+        for (int i = 0; i < array.length; i++) {
+            array[i] = rand.nextInt(bound);
         }
-        return test_array;
+        return array;
+    }
+
+    // Вариант для вложенных массивов
+    public static int[][] getArray(int length, int height, int bound) {
+        Random rand = new Random();
+        int[][] array = new int[length][height];
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = rand.nextInt(bound);
+            }
+        }
+        return array;
     }
 
     // Выводит массив в консоль
     public static void printArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " | ");
+        }
+    }
+
+    // Вариант для вложенных массивов
+    public static void printArray(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j]+ " | ");
+            }
+            System.out.println();
         }
     }
 
@@ -67,28 +98,33 @@ public class Main {
     }
 
     //Задание 3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ]
-    // пройти по нему циклом, и числа меньшие 6 умножить на 2;
+    //пройти по нему циклом, и числа меньшие 6 умножить на 2;
     public static int[] multiplyElems(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            if (array[i] < 6) array[i] = array[i] * 2;
+            if (array[i] < 6) {
+                array[i] = array[i] * 2;
+            }
         }
         return array;
 
     }
 
-    //4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое),
-    //и с помощью цикла(-ов) заполнить его диагональные элементы единицами (можно только одну из диагоналей, если обе сложно).
-    //Определить элементы одной из диагоналей можно по следующему принципу: индексы таких элементов равны, то есть [0][0], [1][1], [2][2], …, [n][n];
-//    public static int[] fillDiagonal(int[] array) {
-//        for (int i = 0; i < ; i++) {
-//            for (int j = 0; j < ; j++) {
-//                if (i == j) array[i][j] = 1;
-//            }
-//        }
-//        return array;
-//    }
+    //Задание 4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое),
+    //и с помощью цикла(-ов) заполнить его диагональные элементы единицами .
+    public static int[][] fillDiagonal(int[][] array) {
+        for (int i = 0; i < array.length ; i++) {
+            for (int j = 0; j < array[i].length ; j++) {
+                if (i == j) {
+                    array[i][j] = 1;
+                } else if (j == array[i].length - 1 - i) {
+                    array[i][j] = 1;
+                }
+            }
+        }
+        return array;
+    }
 
-    //5. Написать метод, принимающий на вход два аргумента: len и initialValue,
+    //Задание 5. Написать метод, принимающий на вход два аргумента: len и initialValue,
     //и возвращающий одномерный массив типа int длиной len,
     //каждая ячейка которого равна initialValue;
     public static int[] newCustomArray(int len, int initialValue) {
@@ -99,7 +135,7 @@ public class Main {
         return array;
     }
 
-    //6. Задать одномерный массив и найти в нем минимальный и максимальный значения элементов;
+    //Задание 6. Задать одномерный массив и найти в нем минимальный и максимальный значения элементов;
     public static void findMinMax(int[] array) {
         int min = array[0];
         int max = array[0];

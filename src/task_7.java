@@ -3,7 +3,6 @@ import java.util.Random;
 public class task_7 {
 
     public static void main(String[] args) {
-        Main main = new Main();
         int[] test_array = Main.getArray(10, 10);
 
         Main.printArray(test_array);

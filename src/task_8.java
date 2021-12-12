@@ -1,12 +1,13 @@
 import java.util.Arrays;
 
 public class task_8 {
+
     public static void main(String[] args) {
-        int[] array_a = Main.getArray(15, 10);
-        // int[] array_a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        // int[] array_a = Main.getArray(15, 10);
+        int[] array_a = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         System.out.println("Отправили массив: " + Arrays.toString(array_a));
-        System.out.println("Получили массив: " + Arrays.toString(moveNumbers(array_a, -31)));
+        System.out.println("Получили массив: " + Arrays.toString(moveNumbers(array_a, -12)));
 
     }
 
